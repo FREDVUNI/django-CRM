@@ -1,2 +1,2 @@
-# django-CRM
+# djangob CRM
 A django CRM app
