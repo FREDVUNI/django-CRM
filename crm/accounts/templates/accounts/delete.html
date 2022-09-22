@@ -1,0 +1,17 @@
+{% extends 'accounts/main.html' %}
+{% block title %}
+    Delete orders.product
+{% endblock %}
+
+{% block content %}
+    <div class="card card-body">
+        <p>Are you sure you want to delete {{ orders.product }} ?</p>
+        <form action="{% url 'deleteorder' orders.id %}" method="post">
+            {% csrf_token %}
+            <div class="d-flex">
+                <a href="{% url 'home' %}" class="btn btn-secondary btn-block col-md-4 mt-3 mr-3">Cancel</a>
+                <button type="submit" class="btn btn-danger btn-block col-md-4 mt-3">Delete</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}    

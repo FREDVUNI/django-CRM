@@ -1,0 +1,78 @@
+{% extends 'accounts/main.html' %}
+
+{% block title %}
+    Dashboard|Customers
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card card-body  text-dark">
+            <h4>Customer</h4>
+            <div class="card-title d-flex">
+                <a href="" class="text-info">Edit customer</a>
+                <a href="{% url 'addorder' customer.id %}" class="text-success ml-2">Add order</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-body">
+            <h4>Contact Information</h4>
+            <span>Name:{{ customer.name }}</span>
+            <span>Email:{{ customer.email }}</span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-body">
+            <h4>Total Orders</h4>
+            <div class="card-text">
+                <h3>{{ orders.count }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <form action="" method="GET">
+                {{ filter_order.form }}
+                <br>
+                <button type="submit" class="btn btn-dark">SEARCH</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <h5>Products</h5>
+                <table class="table table-sm">
+                    <tr>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Date Created</th>
+                        <th>Status</th>
+                        <th>update</th>
+                        <th>Remove</th>
+                    </tr>
+                    <tbody>
+                        {% for c in orders %}
+                        <tr>
+                            <td>{{ c.product }}</td>
+                            <td>{{ c.product.category }}</td>
+                            <td>{{ c.product.date_created }}</td>
+                            <td>{{ c.status }}</td>
+                            <td>
+                                <a href="" class="text-info">Edit</a>
+                            </td>
+                            <td>
+                                <a href="" class="text-danger">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
